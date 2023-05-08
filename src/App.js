@@ -1,3 +1,5 @@
+/* Function Based React Application */
+
 import './App.css';
 import About from './components/About';
 import Navbar from './components/Navbar';
@@ -77,7 +79,7 @@ function App() {
    function changeBodyBackground(bodyColor){
   //   document.body.style.backgroundColor = bodyColor;
       if(mode === 'dark'){
-         document.body.style.cssText = `background-color: ${bodyColor}`
+         document.body.style.cssText = `background-color: ${bodyColor}` // it removed existing style and add this new style
       }
      
    }
