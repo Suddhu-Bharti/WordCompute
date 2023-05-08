@@ -123,8 +123,8 @@ export default function TextForm(props) {
 
         <div className="container mt-5" style={{color: props.mode === 'light'?"black":"white"}}>
           <h3>Your Text Summary</h3>
-          <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
-          <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes taken</p>
+          <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+          <p>{(0.008 * text.split(/\s+/).filter((element)=>{return element.length!==0}).length).toFixed(2)} Minutes taken</p>
           <h4>Preview:</h4>
           <p className="outputText">{text === ""?"Nothing to preview!": ""}</p>
         </div>
