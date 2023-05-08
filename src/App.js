@@ -35,14 +35,14 @@ function App() {
   const [mode, setMode] = useState(modes); //dark mode control
   const [alert, setAlert] = useState(null); // Now alert is an object
 
-  setInterval(()=>{
-    document.title = 'Hello World!';
+  // setInterval(()=>{
+  //   document.title = 'Hello World!';
     
-  }, 1000);
+  // }, 1000);
 
-  setInterval(()=>{
-    document.title = 'Bye World';
-  }, 2000);
+  // setInterval(()=>{
+  //   document.title = 'Bye World';
+  // }, 2000);
 
   const showAlert = (message, type) => {
     setAlert({
@@ -51,14 +51,14 @@ function App() {
     })
     setTimeout(() => {
       setAlert(null);
-    },1500)
+    },2000)
   }
 
   const toggleMode = () => {
     if(mode === 'light'){
       setMode("dark");
       modes="dark";
-      document.body.style.backgroundColor = 'rgb(49 54 58';
+      document.body.style.cssText = 'background-color:rgb(49 54 58)';
       localStorage.setItem('darkModeStatus', 'true');
       changeColor();
       showAlert("Dark mode has been enabled", "success");
@@ -66,7 +66,7 @@ function App() {
     }else{
       setMode("light");
       modes="light";
-      document.body.style.backgroundColor = 'white';
+      document.body.style.cssText = 'background-color:white';
       localStorage.removeItem('darkModeStatus');
       changeColor();
       showAlert("Light mode has been enabled", "success");
@@ -74,20 +74,25 @@ function App() {
     }
   }
 
-  // function changeBodyBackground(bodyColor){
+   function changeBodyBackground(bodyColor){
   //   document.body.style.backgroundColor = bodyColor;
-  // }
+      if(mode === 'dark'){
+         document.body.style.cssText = `background-color: ${bodyColor}`
+      }
+     
+   }
 
   return (
     <>
       <Router>
-        <Navbar title="WordCompute" mode={mode} toggleMode={toggleMode} checked="checked" aboutText="About Us"/>
+        <Navbar title="Word Computier" mode={mode} toggleMode={toggleMode} changeBodyBackground={changeBodyBackground} checked="checked" aboutText="About Us"/>
+
         <Alert alert={alert}/>
 
       <div className="container">
         <Routes>
-          <Route exact path="/about" element={<About/>} />
-          <Route exact path="/" element={<TextForm heading="Type Your Text In The Box" mode={mode} showingAlert={showAlert}/>} />
+          <Route exact path="/about" element={<About mode={mode}/>} />
+          <Route exact path="/" element={<TextForm heading="Word Counter - Let's play with your words" mode={mode} showingAlert={showAlert}/>} />
         </Routes>
       </div>
 

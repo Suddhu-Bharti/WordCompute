@@ -2,12 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-// function changeBodyBackground(bodyColor){
-//   document.body.style.backgroundColor = bodyColor;
-// }
-
 export default function Navbar(props) {
-
   
   return (
     
@@ -20,19 +15,32 @@ export default function Navbar(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+            <Link className="nav-link" aria-current="page" to="/">Home</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/about">{props.aboutText}</Link>
           </li>
         </ul>
-        {/* <form className="d-flex" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-primary" type="submit">Search</button>
-        </form> */}
+        
         <div className={`form-check form-switch text-${props.mode === 'light'?"dark":"light"}`}>
-            <input className="dark-mode-check form-check-input " onClick={props.toggleMode} type="checkbox" role="switch" id="checkedInput"/>
-            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" id="inp-check">Enable DarkMode</label>
+          <ul className='navbar-nav'>
+
+            <li className="nav-item dropdown">
+
+            <input className="dark-mode-check form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="checkedInput" checked={props.mode === 'dark'}/>
+
+            <label className="form-check-label dropdown-toggle" roll="button" htmlFor="flexSwitchCheckDefault" data-bs-toggle="dropdown" aria-expanded="false" id="inp-check">Dark mode</label>
+
+            <ul class={`dropdown-menu bg-${props.mode === 'light'?"info":"secondary"}`}>
+            <li><button class="dropdown-item" onClick={()=> {props.changeBodyBackground('#374b5a')}} >Bluish</button></li>
+            <li><button class="dropdown-item" onClick={()=> {props.changeBodyBackground('rgb(100 65 89)')}} >Pinkish</button></li>
+            
+            <li><button class="dropdown-item" onClick={()=> {props.changeBodyBackground('rgb(155 150 105)')}} >Yellowish</button></li>
+            </ul>
+            </li>
+          </ul>
+          
+            
         </div>
       </div>
     </div>
