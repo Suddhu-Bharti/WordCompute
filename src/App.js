@@ -87,14 +87,14 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar title="Word Computier" mode={mode} toggleMode={toggleMode} changeBodyBackground={changeBodyBackground} checked="checked" aboutText="About Us"/>
+        <Navbar title="Word Computer" mode={mode} toggleMode={toggleMode} changeBodyBackground={changeBodyBackground} checked="checked" aboutText="About"/>
 
         <Alert alert={alert}/>
 
       <div className="container">
         <Routes>
           <Route exact path="/about" element={<About mode={mode}/>} />
-          <Route exact path="/" element={<TextForm heading="Word Counter - Let's play with your words" mode={mode} showingAlert={showAlert}/>} />
+          <Route exact path="/" element={<TextForm heading="Word Computer - Let's play with your words" mode={mode} showingAlert={showAlert}/>} />
         </Routes>
       </div>
 
