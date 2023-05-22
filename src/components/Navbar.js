@@ -6,7 +6,7 @@ export default function Navbar(props) {
   
   return (
     
-    <nav className={`navbar navbar-expand navbar-${props.mode} bg-${props.mode}`}>
+    <nav className={`navbar navbar-expand-sm navbar-${props.mode} bg-${props.mode}`}>
     <div className="container-fluid">
       <Link className="navbar-brand" to="/">{props.title}</Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,8 @@ export default function Navbar(props) {
             <button className="btn btn-info btn-sm" onClick={changeBodyBackground("pink")} >Pinkish</button>
             <button className="btn btn-info btn-sm" onClick={changeBodyBackground("yellow")} >Yellowish</button>
     </div> */}
-  </nav>
+    </nav>
+  
   )
 }
 
